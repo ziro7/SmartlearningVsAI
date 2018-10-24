@@ -21,6 +21,8 @@ GameObject:
   - component: {fileID: 4630969880653686}
   - component: {fileID: 20126931824099444}
   - component: {fileID: 114739920765184008}
+  - component: {fileID: 114981917947206316}
+  - component: {fileID: 114696981214997304}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -69,7 +71,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 4294965247
+    m_Bits: 4294967295
   m_RenderingPath: 1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -81,6 +83,18 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &114696981214997304
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412776892049196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72180afe947ca37479229165d481409e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  layerPriorities: 0b00000009000000
 --- !u!114 &114739920765184008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,3 +108,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   target: {fileID: 0}
   smoothing: 5
+--- !u!114 &114981917947206316
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1412776892049196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 349d3e414df44b147a9454a789aa1da7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  walkCursor: {fileID: 2800000, guid: 744308fe570f3094d96215dde35a9843, type: 3}
+  attackCursor: {fileID: 2800000, guid: b79ea862e931caf4ea1185292e798430, type: 3}
+  cursorHotspot: {x: 0, y: 0}

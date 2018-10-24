@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 
 // Makes sure that there is a RaycastFromCamera script on camera - if not it adds one.
 [RequireComponent(typeof(RaycastFromCamera))]
@@ -15,24 +16,32 @@ public class CursorAnimation : MonoBehaviour
 
 	RaycastFromCamera raycastFromCamera;
 
+	void Awake()
+	{
+		// Testing that i have assigned a target in the inspector
+		Assert.IsNotNull(walkCursor);
+		Assert.IsNotNull(attackCursor);
+	}
+
 	// Use this for initialization
 	void Start()
 	{
-		raycastFromCamera = FindObjectOfType<RaycastFromCamera>();
-		raycastFromCamera.notifyLayerChangeObservers += OnLayerChanged; //register for changes on layer changes from raycasts.
+		raycastFromCamera = GetComponent<RaycastFromCamera>();
+		// Subscriber registers for info from notifyLayerChangeObservers and says 
+		// that when OnLayerChange is called the method “OnLayerChanged” should be called.
+		raycastFromCamera.notifyLayerChangeObservers += OnLayerChanged; 
 	}
 
-	void Update()
-	{
 
-	}
-
-	// Method that is invoked by delegate when event from RaycastFromCamera script is fired
+	// The Method which is called through the delegate 
+	// on the raycastFromCamera when the mouse hover over a new layer 
+	// The layer that is now hovered over is given to the method.
 	void OnLayerChanged(int newLayer)
 	{
 		switch (newLayer)
 		{
 			// if the layer is walkable or default the "walk" icon is set - if enemy the attack icon.
+			// The cursorHotspot sets an option to change the placed click from the middle of the icon to the sword end (as an offset value in vector 2).
 			case walkableLayerNumber:
 				Cursor.SetCursor(walkCursor, cursorHotspot, CursorMode.Auto);
 				break;
