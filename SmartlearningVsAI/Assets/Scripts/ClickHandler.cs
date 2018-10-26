@@ -12,7 +12,7 @@ public class ClickHandler : MonoBehaviour
 	[SerializeField] float damagePerHit = 35f;
 
 	private GameObject enemy;
-	private Enemy enemyComponent;
+	private Stats enemyComponent;
 	private float lastHitTime;
 	private bool isRunning = false;
 
@@ -77,7 +77,7 @@ public class ClickHandler : MonoBehaviour
 
 			// This will only be run if the enemy is in range
 			// Get the component of the enemy that have a takeDamage method.
-			enemyComponent = enemy.GetComponent<Enemy>();
+			enemyComponent = enemy.GetComponent<Stats>();
 
 			if (Time.time - lastHitTime > minTimeBetweenHits)
 			{
