@@ -36,9 +36,9 @@ public class Stats : MonoBehaviour, IDamageable {
 	public void TakeDamage(float damageAmount)
 	{
 		// Reduced the health with the damage taken.
-		currentHealth += damageAmount;
+		currentHealth -= damageAmount;
 		currentHealthPct = currentHealth / health;
-
+		Debug.Log("currentHealth: " + currentHealth);
 		// Calls the event saying that the health changed and gives a new percentage
 		// to whomever is registered for the info.
 		OnHealthChanged(currentHealthPct);
