@@ -36,7 +36,7 @@ public class PlayerAttack : MonoBehaviour {
 
 			if ((currentTarget.transform.position - currentTarget.transform.position).magnitude < maxAttackDistance){
 				Debug.Log("2nd if");
-				var enemyComponent = currentTarget.GetComponent<Enemy>();
+				var enemyComponent = currentTarget.GetComponent<Stats>();
 
 				if (Time.time - lastHitTime > minTimeBetweenHits)
 				{

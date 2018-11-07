@@ -13,6 +13,8 @@ public class Stats : MonoBehaviour, IDamageable {
 	[SerializeField] private float baseDamage = 58f;
 	//[SerializeField] private float xpNextLevel = 100f;
 
+	IDie objectToDie;
+
 	private float currentHealth;
 	private float currentMana;
 	float currentHealthPct;
@@ -33,17 +35,29 @@ public class Stats : MonoBehaviour, IDamageable {
 		currentMana = mana;
 	}
 
+	private void Start()
+	{
+		// Finds the first (only) scripts that implements IDie interface.
+		objectToDie = gameObject.GetComponent<IDie>();
+	}
+
 	public void TakeDamage(float damageAmount)
 	{
 		// Reduced the health with the damage taken.
 		currentHealth -= damageAmount;
 		currentHealthPct = currentHealth / health;
-		Debug.Log("currentHealth: " + currentHealth);
+
+		if (currentHealth <= 0)
+		{
+			objectToDie.Die();
+			currentHealth = 0;
+		}
+
 		// Calls the event saying that the health changed and gives a new percentage
 		// to whomever is registered for the info.
 		OnHealthChanged(currentHealthPct);
+				
 
-		// Når man dør skal man respawn ved start med fuld health
 	}
 
 	public void ManaUsed(float manaUsed)
@@ -74,5 +88,16 @@ public class Stats : MonoBehaviour, IDamageable {
 		}
 	}
 
+	public void Respawn()
+	{
+		currentHealth = health;
+		currentMana = mana;
 
+		// Calls the events saying that the health and mana changed and gives a new percentage
+		OnHealthChanged(currentHealthPct);
+		OnManaChanged(currentManaPct);
+	}
 }
+
+
+
