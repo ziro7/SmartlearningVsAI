@@ -147,6 +147,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4489805525493418}
   - component: {fileID: 136193212825484506}
+  - component: {fileID: 114897894479459870}
+  - component: {fileID: 114614251422987672}
   m_Layer: 9
   m_Name: PlayerOuterTower1
   m_TagString: Untagged
@@ -467,6 +469,36 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &114614251422987672
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756745817582988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a253bb6a1198bb34883a313741258705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  critChance: 0.05
+  level: 1
+  mana: 317
+  manaGainPrTick: 10
+  health: 570
+  baseDamage: 58
+--- !u!114 &114897894479459870
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1756745817582988}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6ba7233bf97a44199f1ad225e6d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 3
+  target: {fileID: 0}
 --- !u!136 &136193212825484506
 CapsuleCollider:
   m_ObjectHideFlags: 1

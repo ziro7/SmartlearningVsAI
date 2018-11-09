@@ -9,6 +9,7 @@ public class Stats : MonoBehaviour, IDamageable {
 	[SerializeField] private float critChance = 0.05f;
 	[SerializeField] private int level = 1; //Max 5
 	[SerializeField] private float mana = 317f;
+	[SerializeField] private float manaGainPrTick = 10f;
 	[SerializeField] private float health = 570f;
 	[SerializeField] private float baseDamage = 58f;
 	//[SerializeField] private float xpNextLevel = 100f;
@@ -22,6 +23,7 @@ public class Stats : MonoBehaviour, IDamageable {
 
 	// Hvor meget skal være eksponeret?
 	public float CritChance { get { return critChance; } }
+	public float BaseDamage { get { return baseDamage; } }
 
 	// Creates an event that take a float and is being called when health or mana is changed.
 	// I don't need to create a delegate first as i use the generic action delegate here.
@@ -34,11 +36,32 @@ public class Stats : MonoBehaviour, IDamageable {
 		currentHealth = health;
 		currentMana = mana;
 	}
-
+	   	 
 	private void Start()
 	{
 		// Finds the first (only) scripts that implements IDie interface.
 		objectToDie = gameObject.GetComponent<IDie>();
+	}
+
+	private void Update()
+	{
+		RegenMana();
+	}
+
+	private void RegenMana()
+	{
+		if (currentMana == mana)
+		{
+			return;
+		}
+		if (manaGainPrTick > (mana - currentMana))
+		{
+			currentMana += (mana - currentMana);
+		}
+		else
+		{
+			currentMana += manaGainPrTick;
+		}
 	}
 
 	public void TakeDamage(float damageAmount)

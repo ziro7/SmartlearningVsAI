@@ -3,16 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
+[RequireComponent(typeof(Stats))]
 public class ClickHandler : MonoBehaviour
 {
 
 	//[SerializeField] int walkLayer = 9;
 	[SerializeField] int enemyLayer = 11;
 	[SerializeField] float minTimeBetweenHits = 1f;
-	[SerializeField] float damagePerHit = 35f;
 
 	private GameObject enemy;
 	private Stats enemyComponent;
+	private Stats stats;
 	private float lastHitTime;
 	private bool isRunning = false;
 
@@ -26,6 +27,7 @@ public class ClickHandler : MonoBehaviour
 		raycastFromCamera = FindObjectOfType<RaycastFromCamera>();
 		animator = GetComponent<Animator>();
 		navMeshAgent = GetComponent<NavMeshAgent>();
+		stats = GetComponent<Stats>();
 		// Subscriber registers for info from notifyLeftMouseClickObservers and says 
 		// that when notifyLeftMouseClickObservers is called the method “ClickToMove” should be called.
 		raycastFromCamera.notifyLeftMouseClickObservers += HandleClick;
@@ -44,7 +46,6 @@ public class ClickHandler : MonoBehaviour
 		// is set to running.
 		if (navMeshAgent.remainingDistance <= navMeshAgent.stoppingDistance)
 		{
-			Debug.Log("update");
 			isRunning = false;
 		}
 		else
@@ -89,11 +90,29 @@ public class ClickHandler : MonoBehaviour
 
 	IEnumerator AutoAttack()
 	{
-		Debug.Log("Coroutine");
+		// Start by setting the lastHitTime to “now” => the present time of the game
 		lastHitTime = Time.time;
-		animator.Play("autoAttack");
+		// Plays the animation for the AutoAttack
+		animator.Play("AutoAttack");
+		// This says that the thread should block execution until the set time has passed
 		yield return new WaitForSeconds(0.2f);
+		// After the time has passed the TakeDamage method on the enemy is called
+		// Finding the baseDamage from stats script and send it to the enemy.
+		// The idea is to sync the animation hitting the enemy with the time the enemy take damage.
+		float damagePerHit = stats.BaseDamage;
 		enemyComponent.TakeDamage(damagePerHit);
 	}
+
+	/*
+	void OnDrawGizmos()
+	{
+		// Draw a linie from “from” position to the “to” position.
+		// It set a black cirkel at navMeshAgent.destination
+		Gizmos.color = Color.black;
+		Gizmos.DrawLine(transform.position, navMeshAgent.destination);
+		Gizmos.DrawSphere(navMeshAgent.destination, 0.2f);
+	}
+	*/
+
 }
 

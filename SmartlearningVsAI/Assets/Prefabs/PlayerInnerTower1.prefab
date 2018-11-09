@@ -67,6 +67,8 @@ GameObject:
   - component: {fileID: 4597805389203344}
   - component: {fileID: 136844117972303414}
   - component: {fileID: 135788748752884078}
+  - component: {fileID: 114115570277660924}
+  - component: {fileID: 114417516686454016}
   m_Layer: 9
   m_Name: PlayerInnerTower1
   m_TagString: Untagged
@@ -451,6 +453,36 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &114115570277660924
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265289060269744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6ba7233bf97a44199f1ad225e6d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 3
+  target: {fileID: 0}
+--- !u!114 &114417516686454016
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1265289060269744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a253bb6a1198bb34883a313741258705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  critChance: 0.05
+  level: 1
+  mana: 317
+  manaGainPrTick: 10
+  health: 570
+  baseDamage: 58
 --- !u!135 &135788748752884078
 SphereCollider:
   m_ObjectHideFlags: 1

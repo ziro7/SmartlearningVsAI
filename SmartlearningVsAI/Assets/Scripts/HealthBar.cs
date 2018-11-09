@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Assertions;
 using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour {
@@ -10,7 +11,7 @@ public class HealthBar : MonoBehaviour {
 
 	private void Awake()
 	{
-		//Assert image is set!
+		Assert.IsNotNull(foregroundImage);
 
 		// Subscribe to the event in health script on this elements parent. 
 		// Parent in Unity is the hierarchy – which basicly is the element 

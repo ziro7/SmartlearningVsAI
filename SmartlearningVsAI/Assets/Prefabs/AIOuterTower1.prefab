@@ -197,6 +197,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4938861159535238}
   - component: {fileID: 136366040976576990}
+  - component: {fileID: 114377108898562872}
+  - component: {fileID: 114996592916796656}
   m_Layer: 9
   m_Name: AIOuterTower1
   m_TagString: Untagged
@@ -470,6 +472,36 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 1
+--- !u!114 &114377108898562872
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973700452078004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dd6ba7233bf97a44199f1ad225e6d0b8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackRadius: 3
+  target: {fileID: 0}
+--- !u!114 &114996592916796656
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1973700452078004}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a253bb6a1198bb34883a313741258705, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  critChance: 0.05
+  level: 1
+  mana: 317
+  manaGainPrTick: 10
+  health: 570
+  baseDamage: 58
 --- !u!136 &136366040976576990
 CapsuleCollider:
   m_ObjectHideFlags: 1

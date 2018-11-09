@@ -11,7 +11,7 @@ public class EnemyAI : MonoBehaviour {
 	[SerializeField] float minTimeBetweenHits = 1f;
 	private float lastHitTime;
 	private float autoAttackAnimationTime = 0.5f; // TODO
-	private string autoAttack = "Fallen_???_autoAttack"; // TODO
+	private string autoAttack = "AutoAttack"; 
 
 	GameObject player;
 	NavMeshAgent navMeshAgent;
@@ -29,9 +29,7 @@ public class EnemyAI : MonoBehaviour {
 	// Update is called once per frame
 	void Update ()
 	{
-		// Move to method
 		MoveAndAttack();
-
 	}
 
 	private void MoveAndAttack()
